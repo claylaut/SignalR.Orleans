@@ -43,7 +43,7 @@ namespace SignalR.Orleans.Core
                ValidateAndCleanUp,
                State,
                TimeSpan.FromSeconds(15),
-               TimeSpan.FromSeconds(15));
+               TimeSpan.FromMinutes(Constants.SERVERDIRECTORY_CLEANUP_IN_MINUTES));
 
             await base.OnActivateAsync();
         }
@@ -66,7 +66,7 @@ namespace SignalR.Orleans.Core
 
         private async Task ValidateAndCleanUp(object serverDirectory)
         {
-            var expiredServers = State.Servers.Where(server => server.Value < DateTime.UtcNow.AddMinutes(-0.5)).ToList();
+            var expiredServers = State.Servers.Where(server => server.Value < DateTime.UtcNow.AddMinutes(-Constants.SERVERDIRECTORY_CLEANUP_IN_MINUTES)).ToList();
             foreach (var server in expiredServers)
             {
                 var serverDisconnectedStream = _streamProvider.GetStream<Guid>(server.Key, Constants.SERVER_DISCONNECTED);
