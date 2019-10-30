@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -14,8 +14,16 @@
     <IncludeSource>true</IncludeSource>
   </PropertyGroup>
 
+
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Core" Version="$(SignalRVersion)" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <!-- <Reference Include="Microsoft.AspNetCore.SignalR.Core" /> -->
+    <!-- <Reference Include="Microsoft.AspNetCore.SignalR.Common" /> -->
+
+    <!-- <PackageReference Include="Microsoft.AspNetCore.SignalR.Core" Version="1.1.0" />
+
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Common" Version="3.0.0" /> -->
+
     <PackageReference Include="Microsoft.Orleans.Core" Version="$(OrleansCoreVersion)" />
     <PackageReference Include="Microsoft.Orleans.OrleansProviders" Version="$(OrleansProvidersVersion)" />
     <PackageReference Include="Microsoft.Orleans.OrleansCodeGenerator.Build" Version="$(OrleansCodeGeneratorVersion)" />
